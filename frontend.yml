@@ -12,8 +12,12 @@
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
 
-    - name: Removing Old Nginx content
-      ansible.builtin.copy:
+#    - name: Removing Old Nginx content
+#      ansible.builtin.copy:
+#        path: /usr/share/nginx/html
+#        state: absent
+    - name: Remove old web content
+      file:
         path: /usr/share/nginx/html
         state: absent
 
