@@ -23,8 +23,8 @@
         url: https://expense-artifacts.s3.amazonaws.com/$frontend.zip
         dest: /tmp/frontend.zip
 
-    - name: Extracting Frontend Code
-    - name: Starting Nginx Service
+#    - name: Extracting Frontend Code
+#    - name: Starting Nginx Service
 
 
 
