@@ -16,13 +16,17 @@
         path: /usr/share/nginx/html
         state: absent
 
-    - name: download Frontend Code
+    - name: download Frontend Code and Extract it
       ansible.builtin.get_url:
-        url: https://expense-artifacts.s3.amazonaws.com/frontend.zip
-        dest: /tmp/frontend.zip
+        src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
+        dest: /usr/share/nginx/html
+        remote_src: yes
 
-#    - name: Extracting Frontend Code
-#    - name: Starting Nginx Service
+    - name: Starting Nginx Service
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
 
 
 
