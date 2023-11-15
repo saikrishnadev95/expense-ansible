@@ -1,6 +1,5 @@
-- name: Frontend setup
+- name: Frontend Setup
   hosts: all
-  become: yes
   tasks:
     - name: Installing Nginx
       ansible.builtin.dnf:
@@ -17,20 +16,44 @@
         path: /usr/share/nginx/html
         state: absent
 
-    - name: Creating Nginx Content Directory
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        remote_src: directory
+    - name: download Frontend Code
+      ansible.builtin.get_url:
+        url: https://expense-artifacts.s3.amazonaws.com/frontend.zip
+        dest: /tmp/frontend.zip
 
-    - name: Download Frontend Code and Extract it
-      ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
-        dest: /usr/share/nginx/html
-        remote_src: yes
+#    - name: Extracting Frontend Code
+#    - name: Starting Nginx Service
 
-    - name: Starting Nginx Service
-      ansible.builtin.systemd:
-        name: nginx
-        state: restarted
-        enabled: yes
 
+
+
+
+
+
+
+
+
+#  source common.sh
+#  component=frontend
+#
+#  echo Installing Nginx
+#  dnf install nginx -y &>>$log_file
+#  stat_check
+#
+#
+#  echo Placing Expense Config File in Nginx
+#  cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
+#  stat_check
+#
+#  echo Removing Old Nginx content
+#  rm -rf /usr/share/nginx/html/* &>>$log_file
+#  stat_check
+#
+#  cd /usr/share/nginx/html
+#
+#  download_and_extract
+#
+#  echo Starting Nginx Service
+#  systemctl enable nginx &>>$log_file
+#  systemctl restart nginx &>>$log_file
+#  stat_check
