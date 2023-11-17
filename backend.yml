@@ -28,7 +28,7 @@
         path: /app
         state: directory
 
-    - name: Download Frontend Code and Extract it
+    - name: Download Backend Code and Extract it
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/backend.zip
         dest: /app
