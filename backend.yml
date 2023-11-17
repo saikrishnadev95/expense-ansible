@@ -44,7 +44,7 @@
       ansible.builtin.dnf:
         name: mysql
     - name: Load Schema
-      ansible.builtin.shell: ysql -h mysql.rdevopsb73.online -uroot -p$mysql_root_password < /app/schema/backend.sql
+      ansible.builtin.shell: mysql -h mysql.saikrishna.cloud -uroot -p$mysql_root_password < /app/schema/backend.sql
 
     - name: Start backend service
       ansible.builtin.systemd:
