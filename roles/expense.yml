@@ -1,4 +1,5 @@
 - name: Backend Setup
   hosts: all
   become: yes
-  tasks:
+  roles:
+    - "{{ role_name }}"
